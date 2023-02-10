@@ -1,4 +1,0 @@
-<!-- Footer -->
-        </div>
-    </body>
-</html>
