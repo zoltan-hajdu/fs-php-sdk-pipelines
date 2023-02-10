@@ -4,7 +4,6 @@ parameters:
 	checkExplicitMixedMissingReturn: true
 	checkPhpDocMissingReturn: true
 	reportUnmatchedIgnoredErrors: false
-	disableRuntimeReflectionProvider: true
 	excludePaths:
 		- %rootDir%/../../../tests/acceptance/*
 		- %rootDir%/../../../tests/reports/*
