@@ -1,0 +1,11 @@
+PHPCS_SEVERITY=1
+
+if [ "$1" != "" ]; then
+   PHPCS_SEVERITY=$1
+fi
+set -e
+
+echo "==============================="
+echo "          CODE STYLE TESTS"
+echo "==============================="
+vendor/bin/phpcs --ignore=*/vendor/*  --severity=$PHPCS_SEVERITY --standard=PSR2 . -s

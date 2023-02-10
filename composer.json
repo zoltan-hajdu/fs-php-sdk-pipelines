@@ -1,0 +1,43 @@
+{
+  "name": "zoltan-hajdu/fs-php-sdk-pipelines",
+  "description": "Testing framework for FS PHP SDK",
+  "homepage": "https://github.com/zoltan-hajdu/fs-php-sdk-pipelines",
+  "type": "library",
+  "license": ["GPL-3.0"],
+  "keywords": ["automation", "testing"],
+  "require": {
+    "php": "~7.3.0||~7.4.0||~8.1.0",
+    "squizlabs/php_codesniffer": "^3.6",
+    "pdepend/pdepend": "^2.10",
+    "phpmd/phpmd": "^2.10",
+    "friendsofphp/php-cs-fixer": "^3.2",
+    "phpcompatibility/php-compatibility": "^9.3",
+    "phpmetrics/phpmetrics": "^2.7",
+    "phpstan/phpstan": "^1.1"
+  },
+  "authors": [
+    {
+      "name": "Zoltan Hajdu",
+      "email": "zoltan.h@borngroup.com"
+    }
+  ],
+  "scripts": {
+    "post-install-cmd": [
+      "vendor/bin/phpcs --config-set installed_paths ../../../static/phpcs,../../phpcompatibility/php-compatibility/PHPCompatibility"
+    ],
+    "post-update-cmd": [
+      "vendor/bin/phpcs --config-set installed_paths ../../../static/phpcs,../../phpcompatibility/php-compatibility/PHPCompatibility"
+    ]
+  },
+  "config": {
+    "bin-dir": "bin/"
+  },
+  "bin": [
+    "bin/phpunit-tests",
+    "bin/integrity-tests",
+    "bin/phpcs-tests",
+    "bin/phpmd-tests",
+    "bin/phpstan-tests",
+    "bin/run-all-tests"
+  ]
+}
