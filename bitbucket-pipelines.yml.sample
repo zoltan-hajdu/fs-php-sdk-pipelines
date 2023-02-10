@@ -1,0 +1,79 @@
+image: php:7.4-fpm
+
+pipelines:
+  default:
+    - step:
+        name: Build
+        caches:
+          - composer
+        script:
+          - apt-get update && apt-get install -y unzip libfreetype6-dev libjpeg62-turbo-dev libpng-dev zlib1g-dev libzip-dev libbz2-dev libxml2-dev
+          - apt -qy install $PHPIZE_DEPS && pecl install xdebug-3.1.5
+          - docker-php-ext-configure gd --with-freetype --with-jpeg
+          - docker-php-ext-install -j$(nproc) gd exif zip bz2 xml
+          - docker-php-ext-enable xdebug
+          - export COMPOSER_ALLOW_SUPERUSER=1
+          - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+          - composer selfupdate
+          - composer require --dev zoltan-hajdu/fs-php-sdk-pipelines:1.0.0 --no-update
+          - composer install --no-ansi --no-interaction --no-scripts
+        artifacts:
+          - vendor/**
+    - parallel:
+        - step:
+            caches:
+              - composer
+            name: PHP Code Tests
+            script:
+              - vendor/bin/phpcs -s --colors --standard=PSR2 --extensions=php --severity=1 --ignore=*/vendor/* app tests/api tests/integration
+        - step:
+            caches:
+              - composer
+            name: Mess Detector Tests
+            script:
+              - vendor/bin/phpmd . ansi vendor/zoltan-hajdu/fs-php-sdk-pipelines/static/phpmd/ruleset.xml --exclude vendor/
+        - step:
+            caches:
+              - composer
+            name: PHP Static Analysis Tests
+            script:
+              - vendor/bin/phpstan analyse -c vendor/zoltan-hajdu/fs-php-sdk-pipelines/static/phpstan/phpstan.neon -l 0 --memory-limit 1G --error-format=table --no-ansi --no-progress
+
+  pull-requests:
+    '**':
+    - step:
+        name: Build
+        caches:
+          - composer
+        script:
+          - apt-get update && apt-get install -y unzip libfreetype6-dev libjpeg62-turbo-dev libpng-dev zlib1g-dev libzip-dev libbz2-dev libxml2-dev
+          - apt -qy install $PHPIZE_DEPS && pecl install xdebug-3.1.5
+          - docker-php-ext-configure gd --with-freetype --with-jpeg
+          - docker-php-ext-install -j$(nproc) gd exif zip bz2 xml
+          - docker-php-ext-enable xdebug
+          - export COMPOSER_ALLOW_SUPERUSER=1
+          - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+          - composer selfupdate
+          - composer require --dev zoltan-hajdu/fs-php-sdk-pipelines:1.0.0 --no-update
+          - composer install --no-ansi --no-interaction --no-scripts
+        artifacts:
+          - vendor/**
+    - parallel:
+        - step:
+            caches:
+              - composer
+            name: PHP Code Tests
+            script:
+              - vendor/bin/phpcs -s --colors --standard=PSR2 --extensions=php --severity=1 --ignore=*/vendor/* app tests/api tests/integration
+        - step:
+            caches:
+              - composer
+            name: Mess Detector Tests
+            script:
+              - vendor/bin/phpmd . ansi vendor/zoltan-hajdu/fs-php-sdk-pipelines/static/phpmd/ruleset.xml --exclude vendor/
+        - step:
+            caches:
+              - composer
+            name: PHP Static Analysis Tests
+            script:
+              - vendor/bin/phpstan analyse -c vendor/zoltan-hajdu/fs-php-sdk-pipelines/static/phpstan/phpstan.neon -l 0 --memory-limit 1G --error-format=table --no-ansi --no-progress
