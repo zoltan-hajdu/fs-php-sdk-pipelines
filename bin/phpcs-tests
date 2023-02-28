@@ -6,6 +6,7 @@ fi
 set -e
 
 echo "==============================="
-echo "          CODE STYLE TESTS"
+echo "      PHP CodeSniffer Tests"
 echo "==============================="
-vendor/bin/phpcs --ignore=*/vendor/*  --severity=$PHPCS_SEVERITY --standard=PSR2 . -s
+vendor/bin/phpcs --config-set installed_paths ../../../static/phpcs,../../phpcompatibility/php-compatibility/PHPCompatibility
+vendor/bin/phpcs -s --colors --standard=PSR2 --extensions=php --severity=$PHPCS_SEVERITY --ignore=*/vendor/* app tests/api tests/integration

@@ -12,7 +12,7 @@ fi
 set -e
 
 echo "==============================="
-echo "          PHPStan TESTS"
+echo "     PHP Static Analysis Tests"
 echo "==============================="
 #https://phpstan.org/user-guide/output-format
-vendor/bin/phpstan analyse -l $RULE_LEVEL --error-format=$ERROR_FORMAT -c vendor/zoltan-hajdu/fs-php-sdk-pipelines/static/phpstan/phpstan.neon --no-ansi --no-progress .
+vendor/bin/phpstan analyse -c vendor/zoltan-hajdu/fs-php-sdk-pipelines/static/phpstan/phpstan.neon -l $RULE_LEVEL --memory-limit 1G --error-format=$ERROR_FORMAT --xdebug --no-ansi --no-progress .
