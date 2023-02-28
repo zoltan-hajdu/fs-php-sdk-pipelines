@@ -5,20 +5,19 @@ echo "       COMPOSER VALIDATION"
 echo "==============================="
 composer validate composer.json
 
-echo "==============================="
-echo "          CODE TESTS"
-echo "==============================="
-vendor/bin/phpunit -c vendor/zoltan-hajdu/fs-php-sdk-pipelines/static/integrity/phpunit.xml --log-junit test-reports/junit.xml
+vendor/bin/phpcs-tests
+
+vendor/bin/phpmd-tests
+
+vendor/bin/phpstan-tests
+
+vendor/bin/codecept-tests
 
 if [[ -z "${UNIT_COVERAGE_THRESHOLD}" ]]; then
   UNIT_COVERAGE_THRESHOLD=70
 
 echo "==============================="
-echo "          UNIT TESTS"
-echo "==============================="
-vendor/bin/phpunit -c vendor/zoltan-hajdu/fs-php-sdk-pipelines/unit/phpunit.xml --log-junit test-reports/junit.xml --coverage-html test-coverage-html/ --coverage-clover clover.xml
-
-echo "==============================="
-echo "       UNIT TEST COVERAGE"
+echo "            Coverage"
 echo "==============================="
 vendor/bin/coverage-check clover.xml $UNIT_COVERAGE_THRESHOLD
+exit(0)

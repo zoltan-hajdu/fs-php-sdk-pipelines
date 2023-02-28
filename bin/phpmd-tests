@@ -1,6 +1,6 @@
 set -e
 
 echo "==============================="
-echo "          MESS DETECTOR TESTS"
+echo "       Mess Detector Tests"
 echo "==============================="
-vendor/bin/phpmd . text vendor/zoltan-hajdu/fs-php-sdk-pipelines/static/phpmd/ruleset.xml --exclude vendor/
+vendor/bin/phpmd . ansi vendor/zoltan-hajdu/fs-php-sdk-pipelines/static/phpmd/ruleset.xml --exclude vendor/

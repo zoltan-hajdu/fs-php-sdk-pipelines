@@ -7,11 +7,10 @@ parameters:
 	excludePaths:
 		- %rootDir%/../../../tests/acceptance/*
 		- %rootDir%/../../../tests/reports/*
+		- %rootDir%/../../../tests/_output/*
 		- %rootDir%/../../../tests/_support/*
-		- %rootDir%/../../../tests/unit/*
+		#- %rootDir%/../../../tests/unit/*
 		- %rootDir%/../../../vendor/*
-		- %rootDir%/../../../test-coverage-html/*
-		- %rootDir%/../../../test-reports/*
 	bootstrapFiles:
 			- %rootDir%/../../autoload.php
 	ignoreErrors:
@@ -27,7 +26,6 @@ parameters:
 		- '#Constant TESTS_XDEBUG_ENABLED not found.#'
 		- '#Constant TESTS_XDEBUG_SESSION not found.#'
 		- '#Constant INTEGRATION_TESTS_DIR not found.#'
-		- '#Constant MAGENTO_MODULES_PATH not found.#'
 		- '#Constant TESTS_MODULES_PATH not found.#'
 		- '#Constant TESTS_INSTALLATION_DB_CONFIG_FILE not found.#'
 		- '#Constant T_[A-Z_]+ not found.#'
