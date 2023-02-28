@@ -1,9 +1,9 @@
 paths:
-    tests: /tests
-    output: /tests/_output
-    data: /tests/_data
-    support: /tests/_support
-    envs: /tests/_envs
+    tests: ../../../../../tests
+    output: ../../../../../tests/_output
+    data: ../../../../../tests/_data
+    support: ../../../../../tests/_support
+    envs: ../../../../../tests/_envs
 actor_suffix: Tester
 extensions:
     enabled:
@@ -20,11 +20,11 @@ coverage:
     high_limit: 60
     show_only_summary: true
     format: html
-    output: /tests/_output/coverage/index.html
-    xml: /tests/_output/coverage.xml
+    output: ../../../../../tests/_output/coverage/index.html
+    xml: ../../../../../tests/_output/coverage.xml
     with_total_coverage: false
     include:
-        - /app/*/*.php
+        - ../../../../../app/*/*.php
     exclude:
-        - /app/Configuration/*
-        - /app/Exception/*
+        - ../../../../../app/Configuration/*
+        - ../../../../../app/Exception/*
