@@ -9,7 +9,7 @@
     <rule ref="PSR2"/>
 
     <rule ref="PSR1.Classes.ClassDeclaration.MultipleClasses">
-        <exclude-pattern>src/Builder/BaseBuilder.php</exclude-pattern>
+        <exclude-pattern>*/src/Builder/BaseBuilder.php</exclude-pattern>
         <exclude-pattern>src/*</exclude-pattern>
     </rule>
 
