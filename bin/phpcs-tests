@@ -9,4 +9,4 @@ echo "==============================="
 echo "      PHP CodeSniffer Tests"
 echo "==============================="
 vendor/bin/phpcs --config-set installed_paths ../../../static/phpcs,../../phpcompatibility/php-compatibility/PHPCompatibility
-vendor/bin/phpcs -s --colors --standard=PSR2 --extensions=php --severity=$PHPCS_SEVERITY --ignore=*/vendor/* src tests/api tests/integration
+vendor/bin/phpcs -s --colors --standard=PSR2 --extensions=php --severity=$PHPCS_SEVERITY --ignore=*/vendor/* src tests/Api tests/Integration
