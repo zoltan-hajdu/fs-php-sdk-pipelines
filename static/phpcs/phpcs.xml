@@ -26,6 +26,4 @@
         <exclude-pattern>*/src/*</exclude-pattern>
         <exclude-pattern>*/tests/*</exclude-pattern>
     </rule>
-
-    <!-- TODO: Add own rules -->
 </ruleset>
