@@ -1,3 +1,10 @@
+suites:
+    #    acceptance:
+    #        path: ./
+    unit:
+        path: ./
+#    functional:
+#        path: ./
 paths:
     tests: ../../../../../tests
     output: ../../../../../tests/_output
@@ -24,7 +31,7 @@ coverage:
     xml: ../../../../../tests/_output/coverage.xml
     with_total_coverage: false
     include:
-        - ../../../../../app/*/*.php
+        - ../../../../../src/*/*.php
     exclude:
-        - ../../../../../app/Configuration/*
-        - ../../../../../app/Exception/*
+        - ../../../../../src/Configuration/*
+        - ../../../../../src/Exception/*

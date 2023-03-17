@@ -9,7 +9,7 @@ set -e
 echo "==============================="
 echo "      Codeception PHP Tests"
 echo "==============================="
-vendor/bin/codecept run --steps --ext DotReporter --coverage --coverage-html --coverage-xml -c vendor/zoltan-hajdu/fs-php-sdk-pipelines/static/codeception/codeception.yml
+vendor/bin/codecept run unit --steps --ext DotReporter --coverage --coverage-html --coverage-xml -c vendor/zoltan-hajdu/fs-php-sdk-pipelines/static/codeception/codeception.yml
 
 if [[ -z "${COVERAGE_THRESHOLD}" ]]; then
   COVERAGE_THRESHOLD=70
