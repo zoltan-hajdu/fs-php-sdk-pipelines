@@ -8,5 +8,5 @@ set -e
 echo "==============================="
 echo "      PHP CodeSniffer Tests"
 echo "==============================="
-vendor/bin/phpcs --config-set installed_paths vendor/zoltan-hajdu/fs-php-sdk-pipelines/static/phpcs
+vendor/bin/phpcs --config-set installed_paths vendor/zoltan-hajdu/fs-php-sdk-pipelines/static/phpcs,vendor/phpcompatibility/php-compatibility/PHPCompatibility
 vendor/bin/phpcs -s --colors --standard=vendor/zoltan-hajdu/fs-php-sdk-pipelines/static/phpcs/phpcs.xml --extensions=php --severity=$PHPCS_SEVERITY --ignore=*/vendor/* src tests/Api tests/Integration
