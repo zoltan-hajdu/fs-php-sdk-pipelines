@@ -10,22 +10,20 @@
 
     <rule ref="PSR1.Classes.ClassDeclaration.MultipleClasses">
         <exclude-pattern>*/src/Builder/BaseBuilder.php</exclude-pattern>
-        <exclude-pattern>src/*</exclude-pattern>
+        <exclude-pattern>*/src/*</exclude-pattern>
     </rule>
 
     <rule ref="PSR1.Methods.CamelCapsMethodName.NotCamelCaps">
-        <exclude-pattern>src/*</exclude-pattern>
-        <exclude-pattern>tests/Integration/*</exclude-pattern>
+        <exclude-pattern>*/src/*</exclude-pattern>
+        <exclude-pattern>*/tests/Integration/*</exclude-pattern>
     </rule>
 
     <rule ref="PSR1.Classes.ClassDeclaration.MissingNamespace">
-        <exclude-pattern>tests/*</exclude-pattern>
+        <exclude-pattern>*/tests/*</exclude-pattern>
     </rule>
 
-    <rule ref="Squiz.Classes.ValidClassName.NotCamelCap">
-        <exclude-pattern>src/*</exclude-pattern>
-        <exclude-pattern>tests/*</exclude-pattern>
+    <rule ref="Squiz.Classes.ValidClassName.NotCamelCaps">
+        <exclude-pattern>*/src/*</exclude-pattern>
+        <exclude-pattern>*/tests/*</exclude-pattern>
     </rule>
-
-    <!-- TODO: Add own rules -->
 </ruleset>
